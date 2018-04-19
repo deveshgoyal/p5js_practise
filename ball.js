@@ -7,7 +7,7 @@ var Ball = function () {
     this.r = this.mass * 15;
     this.color = color(150, 134, 200, 100)
     this.strokeColor = color(150, 134, 200, 200)
-    this.position = createVector(200, height / 2)  //createVector(random(0 + 20, width - 20), random(0 + 20, height - 20));
+    this.position = createVector(200, height / 2) //createVector(random(0 + 20, width - 20), random(0 + 20, height - 20));
     this.velocity = createVector(0, 0) //createVector(random(-1 * SPEED, SPEED), random(-1 * SPEED, SPEED));
     this.acceleration = createVector(0, 0)
     this.default_velocity = this.velocity;
@@ -27,9 +27,9 @@ var Ball = function () {
             this.position.x = width - this.r;
         }
 
-        if (this.position.y < 0 - this.r || this.position.y > height - this.r) {
+        if (this.position.y < 0 - this.r || this.position.y > height - this.r - 230) {
             this.velocity.y = this.velocity.y * (-1);
-            this.position.y = height - this.r;
+            this.position.y = height - this.r - 230;
             // noLoop();
         }
 
@@ -40,11 +40,12 @@ var Ball = function () {
     this.hit = function (other) {
 
         return (this.position.x + this.r > other.position1.x &&
-            this.position.y + this.r > other.position1.y &&
-            this.position.x - this.r < other.position1.x + other.w &&
-            this.position.y - this.r < other.position1.y + other.h1)
+                this.position.y + this.r > other.position1.y &&
+                this.position.x - this.r < other.position1.x + other.w &&
+                this.position.y - this.r < other.position1.y + other.h1)
 
-            || (this.position.x + this.r > other.position.x &&
+            ||
+            (this.position.x + this.r > other.position.x &&
                 this.position.y + this.r > other.position.y &&
                 this.position.x - this.r < other.position.x + other.w &&
                 this.position.y - this.r < other.position.y + other.h)
@@ -77,7 +78,7 @@ var Ball = function () {
         stroke(this.strokeColor);
         // ellipse(this.position.x, this.position.y, this.r * 2, this.r * 2)
 
-        image(window.birdImg, this.position.x - this.r , this.position.y - this.r, this.r * 2, this.r * 2)
+        image(window.birdImg, this.position.x - this.r, this.position.y - this.r, this.r * 2, this.r * 2)
         // window.birdImg.position(this.position.x - this.r , this.position.y - this.r)//,this.r * 2, this.r * 2)
         // window.birdImg.size(this.r * 2, this.r * 2);
 
@@ -132,7 +133,7 @@ var Wall = function (x, y) {
 
 
 
-    this.velocity = createVector(-10, 0)
+    this.velocity = createVector(-15, 0)
 
     this.w = 50;
     this.h = 200;
