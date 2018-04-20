@@ -130,7 +130,7 @@ var Ball = function () {
 var Wall = function (x, y) {
 
     this.position = createVector(width, 0);
-
+    this.reset_score = false
 
 
     this.velocity = createVector(-15, 0)
@@ -146,6 +146,7 @@ var Wall = function (x, y) {
         this.h = random(100, 300)
         this.position1.y = 150 + this.h;
         this.h1 = height - 150 - this.h
+        this.reset_score = true
     }
 
     this.position1 = createVector(width, 150 + this.h);

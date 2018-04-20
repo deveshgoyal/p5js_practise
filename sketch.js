@@ -44,8 +44,8 @@ function draw() {
       
         textSize(200)
         // text("ergerg")
-        text("one" , d[1].x, d[1].y )//, d[1].x + 20, d[1].y + 20 )
-        text("two" , d[0].x, d[0].y )//, d[0].x + 20, d[0].y + 20)
+        // text("one" , d[1].x, d[1].y )//, d[1].x + 20, d[1].y + 20 )
+        // text("two" , d[0].x, d[0].y )//, d[0].x + 20, d[0].y + 20)
 
         if ( (width * 1920 / 558) + d[d_i].x  <= 0 ) {
             d[d_i].x = (width * 1920 / 558)  - 20  
@@ -87,8 +87,10 @@ function draw() {
 
         // window.birdImg.filter("threshold", 1);
 
+        fill(255)
         textSize(50)
-        text("Scrre : " + window.count, width / 2 - 300, 40)
+        text("Scrre : " + window.count, 30, 50)
+        textAlign(TOP, TOP)
 
         if (false && ball.hit(wall)) {
             ball.color.setAlpha(0)
@@ -102,8 +104,9 @@ function draw() {
             text("Game Over. Score : " + window.count, width / 2.3, height / 2)
             return false;
         } else {
-            if (wall.position.x < 0) {
+            if (wall.position.x < 0 && wall.reset_score ) {
                 window.count++;
+                wall.reset_score =false
             }
             ball.color.setAlpha(100)
         }
